@@ -6,18 +6,21 @@ import heroPortrait from "@/assets/hero-portrait.png";
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Soft gradient backdrop */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-secondary/60 via-background to-background"
+      {/* Background portrait */}
+      <img
+        src={heroPortrait}
+        alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        loading="eager"
       />
+      {/* Readability overlay */}
       <div
         aria-hidden
-        className="absolute -top-32 right-[-10%] -z-10 h-[480px] w-[480px] rounded-full bg-primary-soft/30 blur-3xl"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-background/95 via-background/80 to-background/40 md:from-background/90 md:via-background/60 md:to-background/10"
       />
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-12 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-28 md:pt-16">
-        <div className="fade-up flex flex-col justify-center">
+      <div className="mx-auto max-w-6xl px-4 pb-20 pt-12 md:px-8 md:pb-28 md:pt-24 lg:min-h-[640px]">
+        <div className="fade-up flex max-w-2xl flex-col justify-center">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             {SITE.tagline}
@@ -70,27 +73,6 @@ export function Hero() {
             <span>Μέλος Ε.Ε.Σ.</span>
             <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
             <span>Η 1η συνεδρία είναι γνωριμίας</span>
-          </div>
-        </div>
-
-        <div className="fade-up relative">
-          <div className="relative w-full overflow-hidden rounded-3xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.25)]">
-            <img
-              src={heroPortrait}
-              alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
-              className="h-auto w-full object-cover"
-              loading="eager"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 md:p-8">
-              <blockquote className="rounded-2xl bg-background/92 p-5 backdrop-blur-sm shadow-sm md:p-6">
-                <p className="font-serif text-base leading-relaxed text-ink md:text-lg">
-                  «Η ψυχική υγεία βρίσκεται στο επίκεντρο κάθε μας ενέργειας.»
-                </p>
-                <footer className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Ευδοκία Τίντζη-Σαββιδάκη
-                </footer>
-              </blockquote>
-            </div>
           </div>
         </div>
       </div>
