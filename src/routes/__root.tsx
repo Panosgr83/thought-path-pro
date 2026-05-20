@@ -78,33 +78,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${SITE.name} — Κέντρο Ψυχικής Υγείας στο Γαλάτσι` },
-      {
-        name: "description",
-        content:
-          "Επαγγελματική ψυχολογική υποστήριξη στο Γαλάτσι. Συμβουλευτική, ψυχοθεραπεία, life coaching, παιδική ψυχολογία. Κλείστε ραντεβού γνωριμίας.",
-      },
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "el_GR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#0F5F5C" },
-      { title: "Lovable App" },
-      { property: "og:title", content: "Lovable App" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
-      { property: "og:description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
-      { name: "twitter:description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/8gXxOMiqRDNzBKMSZDqdI5kduZq1/social-images/social-1779288140756-hero_section.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/8gXxOMiqRDNzBKMSZDqdI5kduZq1/social-images/social-1779288140756-hero_section.webp" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "canonical", href: SITE.url },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   shellComponent: RootShell,
@@ -139,7 +121,9 @@ function RootComponent() {
         </main>
         <Footer />
         <StickyMobileCTA />
+        <Toaster />
       </div>
     </QueryClientProvider>
   );
 }
+
