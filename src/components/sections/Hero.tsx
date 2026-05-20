@@ -6,15 +6,21 @@ import heroPortrait from "@/assets/hero-portrait.png";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-background">
-      {/* soft warm wash behind portrait */}
+      {/* Full-width background portrait */}
+      <img
+        src={heroPortrait}
+        alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        loading="eager"
+      />
+      {/* Readability overlay — warm wash, lighter on the right where portrait sits */}
       <div
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 -z-10 hidden h-full w-1/2 bg-gradient-to-br from-primary-soft/40 via-background to-background lg:block"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-background/95 via-background/80 to-background/30 md:from-background/92 md:via-background/65 md:to-background/10"
       />
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-12 md:px-8 md:pb-28 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
-        {/* Left: copy */}
-        <div className="fade-up">
+      <div className="mx-auto max-w-6xl px-4 pb-24 pt-14 md:px-8 md:pb-36 md:pt-28 lg:min-h-[680px]">
+        <div className="fade-up flex max-w-2xl flex-col justify-center">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             {SITE.tagline}
@@ -29,8 +35,8 @@ export function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Επαγγελματική ψυχολογική στήριξη σε έναν ζεστό, φιλόξενο χώρο
-            — για να αντιμετωπίσετε τις δυσκολίες, να γνωρίσετε καλύτερα τον
+            Επαγγελματική ψυχολογική στήριξη σε έναν ζεστό, φιλόξενο χώρο —
+            για να αντιμετωπίσετε τις δυσκολίες, να γνωρίσετε καλύτερα τον
             εαυτό σας και να προχωρήσετε μπροστά.
           </p>
 
@@ -50,15 +56,14 @@ export function Hero() {
             </Link>
             <a
               href={`tel:${SITE.phonesTel[0]}`}
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary sm:hidden"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card/80 px-6 py-3.5 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-primary/40 hover:text-primary sm:hidden"
             >
               <Phone className="h-4 w-4" />
               Καλέστε τώρα
             </a>
           </div>
 
-          {/* Trust strip */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-6 text-sm text-muted-foreground">
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/60 pt-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-4 w-4 fill-warm text-warm" />
@@ -77,23 +82,6 @@ export function Hero() {
               Μέλος Ε.Ε.Σ.
             </span>
           </div>
-        </div>
-
-        {/* Right: portrait */}
-        <div className="fade-up relative">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px] overflow-hidden rounded-[2rem] bg-secondary shadow-[0_30px_80px_-30px_rgba(224,122,95,0.35)]">
-            <img
-              src={heroPortrait}
-              alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
-              className="h-full w-full object-cover object-center"
-              loading="eager"
-            />
-          </div>
-          {/* decorative frame */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -inset-3 -z-10 hidden rounded-[2.5rem] border border-primary/15 lg:block"
-          />
         </div>
       </div>
     </section>
