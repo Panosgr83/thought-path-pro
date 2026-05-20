@@ -23,6 +23,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: SITE.url },
     ],
+    links: [{ rel: "canonical", href: SITE.url }],
     scripts: [
       {
         type: "application/ld+json",
