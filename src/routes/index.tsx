@@ -1,26 +1,91 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/sections/Hero";
+import { TrustPillars } from "@/components/sections/TrustPillars";
+import { ServicesPreview } from "@/components/sections/ServicesPreview";
+import { AboutPreview } from "@/components/sections/AboutPreview";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ContactPreview } from "@/components/sections/ContactPreview";
+import { SITE, FAQ, SERVICES } from "@/lib/site";
+
+const TITLE = `${SITE.name} — Κέντρο Ψυχικής Υγείας στο Γαλάτσι`;
+const DESCRIPTION =
+  "Επαγγελματική ψυχολογική υποστήριξη στο Γαλάτσι. Συμβουλευτική, ψυχοθεραπεία, life coaching, παιδική & εφηβική ψυχολογία, ΔΕΠΥ. Κλείστε ραντεβού γνωριμίας.";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: SITE.url },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": ["LocalBusiness", "ProfessionalService"],
+          name: SITE.name,
+          description: DESCRIPTION,
+          url: SITE.url,
+          telephone: SITE.phonesTel,
+          email: SITE.emails[0],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: SITE.address.street,
+            addressLocality: SITE.address.city,
+            postalCode: SITE.address.postal,
+            addressCountry: SITE.address.country,
+          },
+          knowsAbout: SERVICES.map((s) => s.title),
+          serviceType: ["Counseling", "Psychotherapy", "Life Coaching"],
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5.0",
+            reviewCount: "6",
+            bestRating: "5",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "21:00",
+            },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <>
+      <Hero />
+      <TrustPillars />
+      <ServicesPreview />
+      <AboutPreview />
+      <Testimonials />
+      <FAQSection />
+      <FinalCTA />
+      <ContactPreview />
+    </>
+  );
 }
