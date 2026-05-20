@@ -7,11 +7,11 @@ export function AboutPreview() {
     <section className="bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:items-center md:px-8">
         <div className="relative">
-          <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.2)]">
+          <div className="overflow-hidden rounded-2xl bg-secondary shadow-[0_20px_60px_-20px_rgba(239,106,59,0.2)]">
             <img
               src={aboutPortrait}
               alt="Ευδοκία Τίντζη-Σαββιδάκη"
-              className="h-full w-full object-cover"
+              className="mx-auto block h-auto w-full object-contain"
               loading="lazy"
             />
           </div>
