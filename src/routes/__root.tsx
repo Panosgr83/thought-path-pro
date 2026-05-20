@@ -96,8 +96,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
       { property: "og:description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
       { name: "twitter:description", content: "Dialogo: Trust & Clarity is a professional website for a mental health center," },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/39bed5be-5666-48db-b8a9-2c421e73649d/id-preview-651e2bde--2ca9a797-920a-4fd7-93b8-fc28da192411.lovable.app-1779281583164.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/39bed5be-5666-48db-b8a9-2c421e73649d/id-preview-651e2bde--2ca9a797-920a-4fd7-93b8-fc28da192411.lovable.app-1779281583164.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/8gXxOMiqRDNzBKMSZDqdI5kduZq1/social-images/social-1779288140756-hero_section.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/8gXxOMiqRDNzBKMSZDqdI5kduZq1/social-images/social-1779288140756-hero_section.webp" },
     ],
     links: [
       {
