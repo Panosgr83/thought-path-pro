@@ -1,28 +1,52 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  Brain, HeartHandshake, Users, Sprout, Briefcase,
+  Zap, ShieldAlert, UsersRound, Heart, Sun, Target, Sparkles,
+} from "lucide-react";
+
 export type Tone =
   | "teal" | "rose" | "amber" | "sky" | "green" | "slate"
   | "emerald" | "orange" | "red" | "cyan" | "yellow";
 
+// Semi-transparent color washes used as a tint over the hero background photo.
+export const TONE_TINT: Record<Tone, string> = {
+  teal: "bg-teal-200/40",
+  rose: "bg-rose-200/40",
+  amber: "bg-amber-200/40",
+  sky: "bg-sky-200/40",
+  green: "bg-green-200/40",
+  slate: "bg-slate-300/40",
+  emerald: "bg-emerald-200/40",
+  orange: "bg-orange-200/40",
+  red: "bg-red-200/40",
+  cyan: "bg-cyan-200/40",
+  yellow: "bg-yellow-200/40",
+};
+
+// Kept for backwards compatibility; now resolves to a monochrome primary chip.
 export const TONE_BG: Record<Tone, string> = {
-  teal: "bg-teal-100 text-teal-700",
-  rose: "bg-rose-100 text-rose-700",
-  amber: "bg-amber-100 text-amber-700",
-  sky: "bg-sky-100 text-sky-700",
-  green: "bg-green-100 text-green-700",
-  slate: "bg-slate-200 text-slate-700",
-  emerald: "bg-emerald-100 text-emerald-700",
-  orange: "bg-orange-100 text-orange-700",
-  red: "bg-red-100 text-red-700",
-  cyan: "bg-cyan-100 text-cyan-700",
-  yellow: "bg-yellow-100 text-yellow-800",
+  teal: "bg-primary/10 text-primary",
+  rose: "bg-primary/10 text-primary",
+  amber: "bg-primary/10 text-primary",
+  sky: "bg-primary/10 text-primary",
+  green: "bg-primary/10 text-primary",
+  slate: "bg-primary/10 text-primary",
+  emerald: "bg-primary/10 text-primary",
+  orange: "bg-primary/10 text-primary",
+  red: "bg-primary/10 text-primary",
+  cyan: "bg-primary/10 text-primary",
+  yellow: "bg-primary/10 text-primary",
 };
 
 export type Service = {
   id: string;
   emoji: string;
+  icon: LucideIcon;
   title: string;
   subtitle: string;
   short: string;
   tone: Tone;
+  hidden?: boolean;
   description: string[];
   benefits: string[];
   forWhom: string[];
