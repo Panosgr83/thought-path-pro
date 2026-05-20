@@ -185,30 +185,30 @@ function ServiceDetailPage() {
             Σχετικές Υπηρεσίες
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((s) => (
-              <Link
-                key={s.id}
-                to="/ypiresies/$serviceId"
-                params={{ serviceId: s.id }}
-                className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-xl text-2xl ${TONE_BG[s.tone]}`}
-                  aria-hidden
+            {related.map((s) => {
+              const RIcon = s.icon;
+              return (
+                <Link
+                  key={s.id}
+                  to="/ypiresies/$serviceId"
+                  params={{ serviceId: s.id }}
+                  className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  {s.emoji}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-serif text-lg text-ink">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {s.short}
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                  Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
-            ))}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <RIcon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-lg text-ink">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {s.short}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
