@@ -6,17 +6,17 @@ import heroPortrait from "@/assets/hero-portrait.png";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-background">
-      {/* Full-width background portrait */}
+      {/* Full-width background portrait — anchored right so face stays visible */}
       <img
         src={heroPortrait}
         alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[85%_center] md:object-right"
         loading="eager"
       />
-      {/* Readability overlay — warm wash, lighter on the right where portrait sits */}
+      {/* Readability overlay — strong left, fully transparent right so portrait reads */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-background/95 via-background/80 to-background/30 md:from-background/92 md:via-background/65 md:to-background/10"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-background via-background/85 to-transparent md:from-background md:via-background/70 md:to-transparent"
       />
 
       <div className="mx-auto max-w-6xl px-4 pb-24 pt-14 md:px-8 md:pb-36 md:pt-28 lg:min-h-[680px]">
