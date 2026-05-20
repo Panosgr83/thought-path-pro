@@ -24,7 +24,7 @@ export function AboutPreview() {
         </div>
 
         <div>
-          <span className="eyebrow">Ποια είμαστε</span>
+          <span className="eyebrow">Ποια είμαι</span>
           <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
             Ευδοκία Τίντζη-Σαββιδάκη
           </h2>
