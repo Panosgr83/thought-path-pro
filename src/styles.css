@@ -32,6 +32,9 @@
   --color-ink: var(--ink);
   --color-warm: var(--warm);
   --color-warm-foreground: var(--warm-foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-foreground: var(--brand-blue-foreground);
+  --color-brand-blue-soft: var(--brand-blue-soft);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -61,32 +64,36 @@
 
 :root {
   --radius: 0.75rem;
-  /* Surface — warm off-white, όχι pure white */
-  --background: oklch(0.985 0.004 170);
-  --foreground: oklch(0.22 0.018 180);
+  /* Surface — pure-ish warm white, ζεστή φιλόξενη αίσθηση v1 */
+  --background: oklch(0.99 0.005 60);
+  --foreground: oklch(0.24 0.015 50);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.018 180);
+  --card-foreground: oklch(0.24 0.015 50);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.018 180);
-  /* Primary — deep teal #0F5F5C */
-  --primary: oklch(0.42 0.055 180);
-  --primary-foreground: oklch(0.985 0.004 170);
-  --primary-soft: oklch(0.78 0.045 175);
-  --ink: oklch(0.18 0.015 180);
-  /* Warm accent — terracotta #C97A4A, sparingly */
-  --warm: oklch(0.68 0.12 45);
-  --warm-foreground: oklch(0.985 0.004 170);
-  --secondary: oklch(0.95 0.012 175);
-  --secondary-foreground: oklch(0.28 0.04 180);
-  --muted: oklch(0.955 0.008 175);
-  --muted-foreground: oklch(0.48 0.018 180);
-  --accent: oklch(0.93 0.025 175);
-  --accent-foreground: oklch(0.32 0.05 180);
+  --popover-foreground: oklch(0.24 0.015 50);
+  /* Primary — warm coral / peach (v1 brand) ~#EF6A3B */
+  --primary: oklch(0.68 0.165 42);
+  --primary-foreground: oklch(0.99 0.005 60);
+  --primary-soft: oklch(0.92 0.06 50);
+  --ink: oklch(0.2 0.015 50);
+  /* Calm brand blue — secondary CTA (v1) ~#234B8E */
+  --brand-blue: oklch(0.46 0.13 260);
+  --brand-blue-foreground: oklch(0.99 0.005 60);
+  --brand-blue-soft: oklch(0.93 0.04 255);
+  /* Warm amber — μόνο για stars/ratings */
+  --warm: oklch(0.8 0.15 80);
+  --warm-foreground: oklch(0.24 0.015 50);
+  --secondary: oklch(0.97 0.014 55);
+  --secondary-foreground: oklch(0.3 0.04 50);
+  --muted: oklch(0.965 0.01 55);
+  --muted-foreground: oklch(0.5 0.018 50);
+  --accent: oklch(0.95 0.035 50);
+  --accent-foreground: oklch(0.34 0.06 45);
   --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.985 0.004 170);
-  --border: oklch(0.91 0.012 175);
-  --input: oklch(0.91 0.012 175);
-  --ring: oklch(0.42 0.055 180);
+  --destructive-foreground: oklch(0.99 0.005 60);
+  --border: oklch(0.92 0.012 55);
+  --input: oklch(0.92 0.012 55);
+  --ring: oklch(0.68 0.165 42);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
