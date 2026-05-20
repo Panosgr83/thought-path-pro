@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { SERVICES, TONE_BG } from "@/lib/ypiresies-data";
+import { SERVICES } from "@/lib/ypiresies-data";
+
+const VISIBLE_SERVICES = SERVICES.filter((s) => !s.hidden);
 
 const TITLE = `Υπηρεσίες Ψυχολόγου στο Γαλάτσι — ${SITE.name}`;
 const DESCRIPTION =
@@ -43,35 +45,35 @@ function YpiresiesPage() {
       <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s) => (
-              <article
-                key={s.id}
-                className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div
-                  className={`flex h-14 w-14 items-center justify-center rounded-xl text-2xl ${TONE_BG[s.tone]}`}
-                  aria-hidden
+            {VISIBLE_SERVICES.map((s) => {
+              const Icon = s.icon;
+              return (
+                <article
+                  key={s.id}
+                  className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  {s.emoji}
-                </div>
-                <div className="flex-1">
-                  <h2 className="font-serif text-xl leading-snug text-ink">{s.title}</h2>
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                    {s.subtitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {s.short}
-                  </p>
-                </div>
-                <Link
-                  to="/ypiresies/$serviceId"
-                  params={{ serviceId: s.id }}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                >
-                  Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </article>
-            ))}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="font-serif text-xl leading-snug text-ink">{s.title}</h2>
+                    <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      {s.subtitle}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {s.short}
+                    </p>
+                  </div>
+                  <Link
+                    to="/ypiresies/$serviceId"
+                    params={{ serviceId: s.id }}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                  >
+                    Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
