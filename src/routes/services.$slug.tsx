@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Check, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Phone, Award } from "lucide-react";
 import { SERVICES, SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -11,14 +11,19 @@ export const Route = createFileRoute("/services/$slug")({
   head: ({ loaderData }) => {
     const s = loaderData?.service;
     if (!s) return {};
-    const title = `${s.title} — ${SITE.name}`;
+    const title = `${s.title} στο Γαλάτσι — ${SITE.name}`;
+    const description = `${s.subtitle} ${SITE.name}, ψυχολόγος Γαλάτσι. Κλείστε ραντεβού γνωριμίας.`.slice(0, 160);
+    const url = `${SITE.url}/services/${s.slug}`;
     return {
       meta: [
         { title },
-        { name: "description", content: s.short },
+        { name: "description", content: description },
         { property: "og:title", content: title },
-        { property: "og:description", content: s.short },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
       ],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         {
           type: "application/ld+json",
@@ -56,6 +61,60 @@ export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetail,
 });
 
+function PillList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="font-serif text-xl text-ink">{title}</h3>
+      <ul className="mt-4 flex flex-wrap gap-2">
+        {items.map((i) => (
+          <li
+            key={i}
+            className="rounded-full border border-border bg-secondary/40 px-3.5 py-1.5 text-sm text-foreground/85"
+          >
+            {i}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function NumberedList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="font-serif text-xl text-ink">{title}</h3>
+      <ol className="mt-4 space-y-3">
+        {items.map((item, idx) => (
+          <li key={item} className="flex gap-3 text-base text-foreground/85">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              {idx + 1}
+            </span>
+            <span className="leading-relaxed">{item}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function CheckList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div>
+      <h3 className="font-serif text-xl text-ink">{title}</h3>
+      <ul className="mt-4 space-y-3">
+        {items.map((b) => (
+          <li key={b} className="flex gap-3 text-base text-foreground/85">
+            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+              <Check className="h-3 w-3" />
+            </span>
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function ServiceDetail() {
   const { service: s } = Route.useLoaderData();
   const idx = SERVICES.findIndex((x) => x.slug === s.slug);
@@ -80,7 +139,10 @@ function ServiceDetail() {
               <h1 className="font-serif text-3xl leading-tight text-ink md:text-5xl">
                 {s.title}
               </h1>
-              <p className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground md:text-lg">
+                {s.subtitle}
+              </p>
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 {s.audience}
               </p>
             </div>
@@ -90,35 +152,74 @@ function ServiceDetail() {
 
       <section className="bg-background py-16 md:py-24">
         <div className="mx-auto grid max-w-4xl gap-12 px-4 md:grid-cols-[1.5fr_1fr] md:px-8">
-          <div>
-            <p className="font-serif text-xl leading-relaxed text-ink md:text-2xl">
-              {s.longIntro}
-            </p>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              {s.short}
-              {/* TODO(content): final long-form copy from client per service */}
-            </p>
+          <div className="space-y-12">
+            <div>
+              <h2 className="font-serif text-2xl text-ink">Η προσέγγισή μας</h2>
+              <p className="mt-4 font-serif text-lg leading-relaxed text-ink md:text-xl">
+                {s.longIntro}
+              </p>
+            </div>
 
-            <h2 className="mt-12 font-serif text-2xl text-ink">Τι περιλαμβάνει</h2>
-            <ul className="mt-5 space-y-3">
-              {s.bullets.map((b: string) => (
-                <li key={b} className="flex gap-3 text-base text-foreground/85">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
-                    <Check className="h-3 w-3" />
-                  </span>
-                  {b}
-                </li>
-              ))}
-            </ul>
+            {s.whenItHelps && (
+              <PillList title="Πότε μπορεί να βοηθήσει" items={s.whenItHelps} />
+            )}
+
+            {s.howWeWork && (
+              <NumberedList title="Πώς δουλεύουμε" items={s.howWeWork} />
+            )}
+
+            {s.approaches && (
+              <PillList title="Θεραπευτικές προσεγγίσεις & εργαλεία" items={s.approaches} />
+            )}
+
+            {s.ageGroups && (
+              <PillList title="Ανά ηλικιακή ομάδα" items={s.ageGroups} />
+            )}
+
+            {s.whatYouGain && (
+              <CheckList title="Τι θα κερδίσετε" items={s.whatYouGain} />
+            )}
+
+            {s.whenToSeekHelp && (
+              <CheckList title="Πότε να αναζητήσετε βοήθεια" items={s.whenToSeekHelp} />
+            )}
+
+            <CheckList title="Τι περιλαμβάνει" items={s.bullets} />
+
+            {s.certification && (
+              <div className="flex gap-4 rounded-2xl border border-primary/20 bg-primary/5 p-5">
+                <Award className="h-6 w-6 shrink-0 text-primary" />
+                <div>
+                  <h3 className="font-serif text-lg text-ink">Πιστοποίηση</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-foreground/85">
+                    {s.certification}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {s.faq && s.faq.length > 0 && (
+              <div>
+                <h3 className="font-serif text-xl text-ink">Συχνές ερωτήσεις</h3>
+                <dl className="mt-4 space-y-4">
+                  {s.faq.map((item) => (
+                    <div key={item.q} className="rounded-xl border border-border bg-card p-5">
+                      <dt className="font-semibold text-ink">{item.q}</dt>
+                      <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                        {item.a}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
           </div>
 
           <aside className="h-fit rounded-2xl border border-border bg-card p-6 shadow-sm md:sticky md:top-28">
             <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
               Πρώτο βήμα
             </div>
-            <h3 className="mt-2 font-serif text-xl text-ink">
-              Κλείστε γνωριμία
-            </h3>
+            <h3 className="mt-2 font-serif text-xl text-ink">Κλείστε γνωριμία</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Η πρώτη συνάντηση είναι συνάντηση γνωριμίας — χωρίς δέσμευση.
             </p>
