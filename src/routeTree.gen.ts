@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as YpiresiesRouteImport } from './routes/ypiresies'
 import { Route as ViografikoRouteImport } from './routes/viografiko'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -19,14 +18,10 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as YpiresiesIndexRouteImport } from './routes/ypiresies.index'
 import { Route as YpiresiesServiceIdRouteImport } from './routes/ypiresies.$serviceId'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
-const YpiresiesRoute = YpiresiesRouteImport.update({
-  id: '/ypiresies',
-  path: '/ypiresies',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ViografikoRoute = ViografikoRouteImport.update({
   id: '/viografiko',
   path: '/viografiko',
@@ -72,10 +67,15 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YpiresiesIndexRoute = YpiresiesIndexRouteImport.update({
+  id: '/ypiresies/',
+  path: '/ypiresies/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YpiresiesServiceIdRoute = YpiresiesServiceIdRouteImport.update({
-  id: '/$serviceId',
-  path: '/$serviceId',
-  getParentRoute: () => YpiresiesRoute,
+  id: '/ypiresies/$serviceId',
+  path: '/ypiresies/$serviceId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/$slug',
@@ -93,9 +93,9 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/viografiko': typeof ViografikoRoute
-  '/ypiresies': typeof YpiresiesRouteWithChildren
   '/services/$slug': typeof ServicesSlugRoute
   '/ypiresies/$serviceId': typeof YpiresiesServiceIdRoute
+  '/ypiresies/': typeof YpiresiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -107,9 +107,9 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/viografiko': typeof ViografikoRoute
-  '/ypiresies': typeof YpiresiesRouteWithChildren
   '/services/$slug': typeof ServicesSlugRoute
   '/ypiresies/$serviceId': typeof YpiresiesServiceIdRoute
+  '/ypiresies': typeof YpiresiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -122,9 +122,9 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/viografiko': typeof ViografikoRoute
-  '/ypiresies': typeof YpiresiesRouteWithChildren
   '/services/$slug': typeof ServicesSlugRoute
   '/ypiresies/$serviceId': typeof YpiresiesServiceIdRoute
+  '/ypiresies/': typeof YpiresiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -138,9 +138,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/viografiko'
-    | '/ypiresies'
     | '/services/$slug'
     | '/ypiresies/$serviceId'
+    | '/ypiresies/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -152,9 +152,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/viografiko'
-    | '/ypiresies'
     | '/services/$slug'
     | '/ypiresies/$serviceId'
+    | '/ypiresies'
   id:
     | '__root__'
     | '/'
@@ -166,9 +166,9 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/viografiko'
-    | '/ypiresies'
     | '/services/$slug'
     | '/ypiresies/$serviceId'
+    | '/ypiresies/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -181,18 +181,12 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   ViografikoRoute: typeof ViografikoRoute
-  YpiresiesRoute: typeof YpiresiesRouteWithChildren
+  YpiresiesServiceIdRoute: typeof YpiresiesServiceIdRoute
+  YpiresiesIndexRoute: typeof YpiresiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/ypiresies': {
-      id: '/ypiresies'
-      path: '/ypiresies'
-      fullPath: '/ypiresies'
-      preLoaderRoute: typeof YpiresiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/viografiko': {
       id: '/viografiko'
       path: '/viografiko'
@@ -256,12 +250,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ypiresies/': {
+      id: '/ypiresies/'
+      path: '/ypiresies'
+      fullPath: '/ypiresies/'
+      preLoaderRoute: typeof YpiresiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ypiresies/$serviceId': {
       id: '/ypiresies/$serviceId'
-      path: '/$serviceId'
+      path: '/ypiresies/$serviceId'
       fullPath: '/ypiresies/$serviceId'
       preLoaderRoute: typeof YpiresiesServiceIdRouteImport
-      parentRoute: typeof YpiresiesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/$slug': {
       id: '/services/$slug'
@@ -285,18 +286,6 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
   ServicesRouteChildren,
 )
 
-interface YpiresiesRouteChildren {
-  YpiresiesServiceIdRoute: typeof YpiresiesServiceIdRoute
-}
-
-const YpiresiesRouteChildren: YpiresiesRouteChildren = {
-  YpiresiesServiceIdRoute: YpiresiesServiceIdRoute,
-}
-
-const YpiresiesRouteWithChildren = YpiresiesRoute._addFileChildren(
-  YpiresiesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -307,8 +296,19 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   ViografikoRoute: ViografikoRoute,
-  YpiresiesRoute: YpiresiesRouteWithChildren,
+  YpiresiesServiceIdRoute: YpiresiesServiceIdRoute,
+  YpiresiesIndexRoute: YpiresiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
