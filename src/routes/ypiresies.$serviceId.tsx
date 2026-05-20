@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, User } from "lucide-react";
 import { SITE } from "@/lib/site";
-import { SERVICES, TONE_BG, getService, type Service } from "@/lib/ypiresies-data";
+import { SERVICES, TONE_BG, TONE_TINT, getService, type Service } from "@/lib/ypiresies-data";
+import heroBg from "@/assets/service-hero-bg.jpg";
 
 export const Route = createFileRoute("/ypiresies/$serviceId")({
   loader: ({ params }) => {
@@ -40,13 +41,22 @@ export const Route = createFileRoute("/ypiresies/$serviceId")({
 
 function ServiceDetailPage() {
   const { service } = Route.useLoaderData() as { service: Service };
-  const related = SERVICES.filter((s) => s.id !== service.id).slice(0, 3);
+  const Icon = service.icon;
+  const related = SERVICES.filter((s) => s.id !== service.id && !s.hidden).slice(0, 3);
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-secondary/40 py-12 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 md:px-8">
+      {/* Hero — background photo + semi-transparent color wash per service */}
+      <section className="relative overflow-hidden py-12 md:py-20">
+        <img
+          src={heroBg}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className={`absolute inset-0 ${TONE_TINT[service.tone]}`} aria-hidden />
+        <div className="absolute inset-0 bg-background/55 backdrop-blur-[2px]" aria-hidden />
+        <div className="relative mx-auto max-w-4xl px-4 md:px-8">
           <Link
             to="/ypiresies"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -55,16 +65,16 @@ function ServiceDetailPage() {
           </Link>
           <div className="mt-8 flex flex-col items-start gap-6 md:flex-row md:items-center">
             <div
-              className={`flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl text-4xl ${TONE_BG[service.tone]}`}
+              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-border bg-card/90 text-primary shadow-sm backdrop-blur"
               aria-hidden
             >
-              {service.emoji}
+              <Icon className="h-7 w-7" />
             </div>
             <div>
               <h1 className="font-serif text-3xl leading-tight text-ink md:text-5xl">
                 {service.title}
               </h1>
-              <p className="mt-3 text-base text-muted-foreground md:text-lg">
+              <p className="mt-3 text-base text-foreground/80 md:text-lg">
                 {service.subtitle}
               </p>
             </div>
@@ -175,30 +185,30 @@ function ServiceDetailPage() {
             Σχετικές Υπηρεσίες
           </h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((s) => (
-              <Link
-                key={s.id}
-                to="/ypiresies/$serviceId"
-                params={{ serviceId: s.id }}
-                className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-xl text-2xl ${TONE_BG[s.tone]}`}
-                  aria-hidden
+            {related.map((s) => {
+              const RIcon = s.icon;
+              return (
+                <Link
+                  key={s.id}
+                  to="/ypiresies/$serviceId"
+                  params={{ serviceId: s.id }}
+                  className="group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  {s.emoji}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-serif text-lg text-ink">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {s.short}
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
-                  Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </Link>
-            ))}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                    <RIcon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-serif text-lg text-ink">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {s.short}
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,28 +1,52 @@
+import type { LucideIcon } from "lucide-react";
+import {
+  Brain, HeartHandshake, Users, Sprout, Briefcase,
+  Zap, ShieldAlert, UsersRound, Heart, Sun, Target, Sparkles,
+} from "lucide-react";
+
 export type Tone =
   | "teal" | "rose" | "amber" | "sky" | "green" | "slate"
   | "emerald" | "orange" | "red" | "cyan" | "yellow";
 
+// Semi-transparent color washes used as a tint over the hero background photo.
+export const TONE_TINT: Record<Tone, string> = {
+  teal: "bg-teal-200/40",
+  rose: "bg-rose-200/40",
+  amber: "bg-amber-200/40",
+  sky: "bg-sky-200/40",
+  green: "bg-green-200/40",
+  slate: "bg-slate-300/40",
+  emerald: "bg-emerald-200/40",
+  orange: "bg-orange-200/40",
+  red: "bg-red-200/40",
+  cyan: "bg-cyan-200/40",
+  yellow: "bg-yellow-200/40",
+};
+
+// Kept for backwards compatibility; now resolves to a monochrome primary chip.
 export const TONE_BG: Record<Tone, string> = {
-  teal: "bg-teal-100 text-teal-700",
-  rose: "bg-rose-100 text-rose-700",
-  amber: "bg-amber-100 text-amber-700",
-  sky: "bg-sky-100 text-sky-700",
-  green: "bg-green-100 text-green-700",
-  slate: "bg-slate-200 text-slate-700",
-  emerald: "bg-emerald-100 text-emerald-700",
-  orange: "bg-orange-100 text-orange-700",
-  red: "bg-red-100 text-red-700",
-  cyan: "bg-cyan-100 text-cyan-700",
-  yellow: "bg-yellow-100 text-yellow-800",
+  teal: "bg-primary/10 text-primary",
+  rose: "bg-primary/10 text-primary",
+  amber: "bg-primary/10 text-primary",
+  sky: "bg-primary/10 text-primary",
+  green: "bg-primary/10 text-primary",
+  slate: "bg-primary/10 text-primary",
+  emerald: "bg-primary/10 text-primary",
+  orange: "bg-primary/10 text-primary",
+  red: "bg-primary/10 text-primary",
+  cyan: "bg-primary/10 text-primary",
+  yellow: "bg-primary/10 text-primary",
 };
 
 export type Service = {
   id: string;
   emoji: string;
+  icon: LucideIcon;
   title: string;
   subtitle: string;
   short: string;
   tone: Tone;
+  hidden?: boolean;
   description: string[];
   benefits: string[];
   forWhom: string[];
@@ -32,6 +56,7 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     id: "symvouleutiki",
+    icon: Brain,
     emoji: "🧠",
     title: "Συμβουλευτική & Ψυχοθεραπεία",
     subtitle: "Ατομική υποστήριξη για προσωπική ανάπτυξη",
@@ -64,6 +89,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "zeugous",
+    icon: HeartHandshake,
     emoji: "💑",
     title: "Συμβουλευτική Ζεύγους",
     subtitle: "Για σχέσεις που αξίζει να επενδύσετε",
@@ -90,6 +116,8 @@ export const SERVICES: Service[] = [
   },
   {
     id: "life-coaching",
+    icon: Target,
+    hidden: true,
     emoji: "🎯",
     title: "Life Coaching",
     subtitle: "Χαράξτε το μονοπάτι για τη ζωή που θέλετε",
@@ -122,6 +150,8 @@ export const SERVICES: Service[] = [
   },
   {
     id: "nlp-coaching",
+    icon: Sparkles,
+    hidden: true,
     emoji: "🔄",
     title: "NLP Coaching",
     subtitle: "Αναπρογραμματίστε τον τρόπο σκέψης σας",
@@ -148,6 +178,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "goneki",
+    icon: Users,
     emoji: "👨‍👩‍👧",
     title: "Γονεϊκή Καθοδήγηση",
     subtitle: "Υποστήριξη για μια πιο αποτελεσματική γονεϊκότητα",
@@ -174,6 +205,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "epaggelmatiki",
+    icon: Briefcase,
     emoji: "💼",
     title: "Επαγγελματική Συμβουλευτική",
     subtitle: "Βρείτε την επαγγελματική πορεία που σας ταιριάζει",
@@ -200,6 +232,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "paidiki",
+    icon: Sprout,
     emoji: "🌱",
     title: "Παιδική & Εφηβική Ψυχολογία",
     subtitle: "Υποστήριξη για κάθε στάδιο ανάπτυξης",
@@ -226,6 +259,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "depy",
+    icon: Zap,
     emoji: "⚡",
     title: "Δ.Ε.Π.Υ.",
     subtitle: "Διαταραχή Ελλειμματικής Προσοχής / Υπερκινητικότητα",
@@ -252,6 +286,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "morphes-vias",
+    icon: ShieldAlert,
     emoji: "🛡️",
     title: "Μορφές Βίας",
     subtitle: "Ψηφιακή βία, bullying και οικογενειακή βία",
@@ -278,6 +313,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "omadiki",
+    icon: UsersRound,
     emoji: "🤝",
     title: "Ομαδική Θεραπεία",
     subtitle: "Η δύναμη της ομάδας στη θεραπευτική διαδικασία",
@@ -304,6 +340,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "sexoualikotita",
+    icon: Heart,
     emoji: "🌿",
     title: "Σεξουαλικότητα",
     subtitle: "Ολιστική υποστήριξη για ζητήματα σεξουαλικής υγείας",
@@ -330,6 +367,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "hlikiomenoi",
+    icon: Sun,
     emoji: "🌅",
     title: "Ηλικιωμένοι & Άνοια",
     subtitle: "Υποστήριξη για τρίτη ηλικία και φροντιστές",
