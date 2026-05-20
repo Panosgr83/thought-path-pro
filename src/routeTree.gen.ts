@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YpiresiesRouteImport } from './routes/ypiresies'
+import { Route as ViografikoRouteImport } from './routes/viografiko'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -19,6 +21,16 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
+const YpiresiesRoute = YpiresiesRouteImport.update({
+  id: '/ypiresies',
+  path: '/ypiresies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViografikoRoute = ViografikoRouteImport.update({
+  id: '/viografiko',
+  path: '/viografiko',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -74,6 +86,8 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/viografiko': typeof ViografikoRoute
+  '/ypiresies': typeof YpiresiesRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +99,8 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/viografiko': typeof ViografikoRoute
+  '/ypiresies': typeof YpiresiesRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
@@ -97,6 +113,8 @@ export interface FileRoutesById {
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
+  '/viografiko': typeof ViografikoRoute
+  '/ypiresies': typeof YpiresiesRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +128,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/viografiko'
+    | '/ypiresies'
     | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +141,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/viografiko'
+    | '/ypiresies'
     | '/services/$slug'
   id:
     | '__root__'
@@ -132,6 +154,8 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/terms'
+    | '/viografiko'
+    | '/ypiresies'
     | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -144,10 +168,26 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  ViografikoRoute: typeof ViografikoRoute
+  YpiresiesRoute: typeof YpiresiesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ypiresies': {
+      id: '/ypiresies'
+      path: '/ypiresies'
+      fullPath: '/ypiresies'
+      preLoaderRoute: typeof YpiresiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/viografiko': {
+      id: '/viografiko'
+      path: '/viografiko'
+      fullPath: '/viografiko'
+      preLoaderRoute: typeof ViografikoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -235,7 +275,19 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  ViografikoRoute: ViografikoRoute,
+  YpiresiesRoute: YpiresiesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
