@@ -7,14 +7,12 @@ export function ServicesPreview() {
   const preview = SERVICES.slice(0, 8);
 
   return (
-    <section className="bg-background py-20 md:py-28">
+    <section className="reveal bg-background py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-              Υπηρεσίες
-            </span>
-            <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">
+            <span className="eyebrow">Υπηρεσίες</span>
+            <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
               Ολοκληρωμένη ψυχολογική υποστήριξη για κάθε ηλικία και ανάγκη
             </h2>
           </div>
@@ -38,7 +36,9 @@ export function ServicesPreview() {
                 <s.icon className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <h3 className="font-serif text-lg leading-snug text-ink">{s.title}</h3>
+                <h3 className="font-serif text-[1.125rem] leading-snug tracking-[-0.01em] text-ink">
+                  {s.title}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.short}</p>
               </div>
               <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
