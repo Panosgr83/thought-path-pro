@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { SITE, SERVICES } from "@/lib/site";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
-const TITLE = `Επικοινωνία — ${SITE.name}`;
+const TITLE = `Επικοινωνία — Ψυχολόγος Γαλάτσι | ${SITE.name}`;
 const DESCRIPTION =
-  "Κλείστε ραντεβού γνωριμίας. Τηλέφωνο, email, φόρμα επικοινωνίας και χάρτης για το Κέντρο Ψυχικής Υγείας στο Γαλάτσι.";
+  "Κλείστε ραντεβού γνωριμίας με ψυχολόγο στο Γαλάτσι. Τηλέφωνο, email, φόρμα επικοινωνίας και χάρτης για το Κέντρο Ψυχικής Υγείας Διά… Λόγου Νόησις.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -14,22 +16,45 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: `${SITE.url}/contact` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/contact` }],
   }),
   component: ContactPage,
 });
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const mapsQ = encodeURIComponent(
     `${SITE.address.street}, ${SITE.address.city} ${SITE.address.postal}`
   );
 
-  // TODO(integration): wire to Lovable Cloud `inquiries` table + email notification.
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") ?? "").trim(),
+      phone: String(fd.get("phone") ?? "").trim(),
+      email: String(fd.get("email") ?? "").trim(),
+      topic: String(fd.get("topic") ?? "").trim() || null,
+      preferred_time: String(fd.get("time") ?? "").trim() || null,
+      message: String(fd.get("message") ?? "").trim() || null,
+    };
+    const { error } = await supabase.from("inquiries").insert(payload);
+    setLoading(false);
+    if (error) {
+      console.error("Inquiry insert failed", error);
+      toast.error("Κάτι πήγε στραβά. Δοκιμάστε ξανά ή καλέστε μας.");
+      return;
+    }
     setSubmitted(true);
+    form.reset();
   }
+
 
   return (
     <>
@@ -138,9 +163,9 @@ function ContactPage() {
                   <input type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-input" />
                   <span>Αποδέχομαι την επεξεργασία των στοιχείων μου σύμφωνα με την <a href="/privacy" className="text-primary hover:underline">Πολιτική Απορρήτου</a>.</span>
                 </label>
-                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-                  <Send className="h-4 w-4" />
-                  Ζητήστε ραντεβού
+                <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60">
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                  {loading ? "Αποστολή…" : "Ζητήστε ραντεβού"}
                 </button>
               </form>
             )}
