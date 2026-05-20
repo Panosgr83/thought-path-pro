@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { SERVICES, TONE_BG } from "@/lib/ypiresies-data";
 
 const TITLE = `Υπηρεσίες Ψυχολόγου στο Γαλάτσι — ${SITE.name}`;
 const DESCRIPTION =
@@ -20,54 +21,6 @@ export const Route = createFileRoute("/ypiresies")({
   }),
   component: YpiresiesPage,
 });
-
-type Tone =
-  | "teal"
-  | "rose"
-  | "amber"
-  | "sky"
-  | "green"
-  | "slate"
-  | "emerald"
-  | "orange"
-  | "red"
-  | "cyan"
-  | "yellow";
-
-const TONE_BG: Record<Tone, string> = {
-  teal: "bg-teal-100 text-teal-700",
-  rose: "bg-rose-100 text-rose-700",
-  amber: "bg-amber-100 text-amber-700",
-  sky: "bg-sky-100 text-sky-700",
-  green: "bg-green-100 text-green-700",
-  slate: "bg-slate-200 text-slate-700",
-  emerald: "bg-emerald-100 text-emerald-700",
-  orange: "bg-orange-100 text-orange-700",
-  red: "bg-red-100 text-red-700",
-  cyan: "bg-cyan-100 text-cyan-700",
-  yellow: "bg-yellow-100 text-yellow-800",
-};
-
-const SERVICES: {
-  emoji: string;
-  title: string;
-  subtitle: string;
-  short: string;
-  tone: Tone;
-}[] = [
-  { emoji: "🧠", title: "Συμβουλευτική & Ψυχοθεραπεία", subtitle: "Ατομική υποστήριξη", short: "Ατομική υποστήριξη για προσωπική ανάπτυξη.", tone: "teal" },
-  { emoji: "💑", title: "Συμβουλευτική Ζεύγους", subtitle: "Σχέσεις", short: "Για σχέσεις που αξίζει να επενδύσετε.", tone: "rose" },
-  { emoji: "🎯", title: "Life Coaching", subtitle: "Προσωπικοί στόχοι", short: "Χαράξτε το μονοπάτι για τη ζωή που θέλετε.", tone: "amber" },
-  { emoji: "🔄", title: "NLP Coaching", subtitle: "Νευρογλωσσικός προγραμματισμός", short: "Αναπρογραμματίστε τον τρόπο σκέψης σας.", tone: "sky" },
-  { emoji: "👨‍👩‍👧", title: "Γονεϊκή Καθοδήγηση", subtitle: "Για γονείς", short: "Υποστήριξη για μια πιο αποτελεσματική γονεϊκότητα.", tone: "green" },
-  { emoji: "💼", title: "Επαγγελματική Συμβουλευτική", subtitle: "Καριέρα & προσανατολισμός", short: "Βρείτε την επαγγελματική πορεία που σας ταιριάζει.", tone: "slate" },
-  { emoji: "🌱", title: "Παιδική & Εφηβική Ψυχολογία", subtitle: "Παιδιά & έφηβοι", short: "Υποστήριξη για κάθε στάδιο ανάπτυξης.", tone: "emerald" },
-  { emoji: "⚡", title: "Δ.Ε.Π.Υ.", subtitle: "Παιδιά & ενήλικες", short: "Διαταραχή Ελλειμματικής Προσοχής / Υπερκινητικότητα.", tone: "orange" },
-  { emoji: "🛡️", title: "Μορφές Βίας", subtitle: "Πρόληψη & υποστήριξη", short: "Ψηφιακή βία, bullying και οικογενειακή βία.", tone: "red" },
-  { emoji: "🤝", title: "Ομαδική Θεραπεία", subtitle: "Θεραπευτικές ομάδες", short: "Η δύναμη της ομάδας στη θεραπευτική διαδικασία.", tone: "cyan" },
-  { emoji: "🌿", title: "Σεξουαλικότητα", subtitle: "Σεξουαλική υγεία", short: "Ολιστική υποστήριξη για ζητήματα σεξουαλικής υγείας.", tone: "teal" },
-  { emoji: "🌅", title: "Ηλικιωμένοι & Άνοια", subtitle: "Τρίτη ηλικία", short: "Υποστήριξη για τρίτη ηλικία και φροντιστές.", tone: "yellow" },
-];
 
 function YpiresiesPage() {
   return (
@@ -92,7 +45,7 @@ function YpiresiesPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s) => (
               <article
-                key={s.title}
+                key={s.id}
                 className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div
@@ -111,7 +64,8 @@ function YpiresiesPage() {
                   </p>
                 </div>
                 <Link
-                  to="/contact"
+                  to="/ypiresies/$serviceId"
+                  params={{ serviceId: s.id }}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                 >
                   Μάθετε περισσότερα <ArrowRight className="h-3.5 w-3.5" />

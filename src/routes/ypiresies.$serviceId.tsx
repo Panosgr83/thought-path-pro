@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, User } from "lucide-react";
 import { SITE } from "@/lib/site";
-import { SERVICES, TONE_BG, getService } from "@/lib/ypiresies-data";
+import { SERVICES, TONE_BG, getService, type Service } from "@/lib/ypiresies-data";
 
 export const Route = createFileRoute("/ypiresies/$serviceId")({
   loader: ({ params }) => {
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/ypiresies/$serviceId")({
 });
 
 function ServiceDetailPage() {
-  const { service } = Route.useLoaderData();
+  const { service } = Route.useLoaderData() as { service: Service };
   const related = SERVICES.filter((s) => s.id !== service.id).slice(0, 3);
 
   return (
