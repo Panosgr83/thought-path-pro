@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Phone, Star } from "lucide-react";
 import { SITE } from "@/lib/site";
+import heroPortrait from "@/assets/hero-portrait.png";
 
 export function Hero() {
   return (
@@ -15,7 +16,7 @@ export function Hero() {
         className="absolute -top-32 right-[-10%] -z-10 h-[480px] w-[480px] rounded-full bg-primary-soft/30 blur-3xl"
       />
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-12 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-28 md:pt-20">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-12 md:grid-cols-[1.1fr_1fr] md:gap-16 md:px-8 md:pb-28 md:pt-16">
         <div className="fade-up flex flex-col justify-center">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -23,36 +24,38 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-            Διά… <span className="text-primary">Λόγου</span> Νόησις
+            Καλωσορίσατε στο <span className="text-primary">Διά… Λόγου Νόησις</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Ένα ασφαλές και υποστηρικτικό περιβάλλον όπου κάθε άτομο μπορεί να
-            εκφραστεί, να αναπτυχθεί και να βρει τις δικές του λύσεις.
+            Κέντρο Ψυχικής Υγείας που προσφέρει επαγγελματική υποστήριξη για την
+            ψυχική σας ευεξία — σε έναν ζεστό, φιλόξενο χώρο όπου μπορείτε να
+            μιλήσετε ελεύθερα.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            {/* Desktop primary → /contact, mobile primary → tel */}
+            {/* Primary CTA (coral) → Υπηρεσίες, secondary (blue) → Επικοινωνία.
+                Mobile gets click-to-call as third option for friction reduction. */}
+            <Link
+              to="/services"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md"
+            >
+              Οι Υπηρεσίες μας
+              <ArrowRight className="h-4 w-4" />
+            </Link>
             <Link
               to="/contact"
-              className="hidden items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md sm:inline-flex"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-brand-blue px-6 py-3.5 text-sm font-semibold text-brand-blue-foreground shadow-sm transition-all hover:bg-brand-blue/90"
             >
-              Κλείστε γνωριμία
-              <ArrowRight className="h-4 w-4" />
+              Επικοινωνία
             </Link>
             <a
               href={`tel:${SITE.phonesTel[0]}`}
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 sm:hidden"
+              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary sm:hidden"
             >
               <Phone className="h-4 w-4" />
               Καλέστε τώρα
             </a>
-            <Link
-              to="/services"
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
-            >
-              Δείτε τις υπηρεσίες
-            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
@@ -71,38 +74,15 @@ export function Hero() {
         </div>
 
         <div className="fade-up relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-primary-soft/40 via-secondary to-primary/20 shadow-[0_20px_60px_-20px_rgba(15,95,92,0.25)]">
-            {/* Decorative composition — no stock photo for v4. */}
-            <svg
-              viewBox="0 0 400 500"
-              className="absolute inset-0 h-full w-full"
-              aria-hidden
-            >
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stopColor="oklch(0.42 0.055 180)" stopOpacity="0.15" />
-                  <stop offset="1" stopColor="oklch(0.78 0.045 175)" stopOpacity="0.05" />
-                </linearGradient>
-              </defs>
-              <circle cx="280" cy="140" r="120" fill="url(#g1)" />
-              <circle cx="120" cy="380" r="160" fill="url(#g1)" />
-              <path
-                d="M50,250 Q200,180 350,260 T350,400"
-                stroke="oklch(0.42 0.055 180)"
-                strokeWidth="1"
-                fill="none"
-                opacity="0.25"
-              />
-              <path
-                d="M50,300 Q200,230 350,310"
-                stroke="oklch(0.42 0.055 180)"
-                strokeWidth="1"
-                fill="none"
-                opacity="0.18"
-              />
-            </svg>
-            <div className="relative flex h-full flex-col justify-end p-8">
-              <blockquote className="rounded-2xl bg-background/90 p-6 backdrop-blur-sm shadow-sm">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.25)]">
+            <img
+              src={heroPortrait}
+              alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="eager"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 md:p-8">
+              <blockquote className="rounded-2xl bg-background/92 p-5 backdrop-blur-sm shadow-sm md:p-6">
                 <p className="font-serif text-base leading-relaxed text-ink md:text-lg">
                   «Η ψυχική υγεία βρίσκεται στο επίκεντρο κάθε μας ενέργειας.»
                 </p>

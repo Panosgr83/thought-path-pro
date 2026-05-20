@@ -4,26 +4,27 @@ import { SITE } from "@/lib/site";
 
 export function FinalCTA() {
   return (
-    <section className="bg-primary py-20 text-primary-foreground md:py-28">
+    <section className="bg-brand-blue py-20 text-brand-blue-foreground md:py-28">
       <div className="mx-auto max-w-3xl px-4 text-center md:px-8">
         <h2 className="font-serif text-3xl leading-tight md:text-5xl">
-          Έτοιμοι να κάνετε το πρώτο βήμα;
+          Κάντε το πρώτο βήμα για μια καλύτερη ζωή
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/85">
-          Επικοινωνήστε μαζί μας για να κλείσετε τη συνάντηση γνωριμίας. Δεν
-          υπάρχει καμία δέσμευση — απλώς ένας χώρος για να ξεκινήσουμε.
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-brand-blue-foreground/85">
+          Δεν χρειάζεται να αντιμετωπίζετε τις δυσκολίες μόνοι σας. Είμαστε εδώ
+          για να σας υποστηρίξουμε — κλείστε σήμερα το πρώτο σας ραντεβού
+          γνωριμίας, χωρίς καμία δέσμευση.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-background px-6 py-3.5 text-sm font-semibold text-primary shadow-sm transition-all hover:bg-background/90"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90"
           >
             <Calendar className="h-4 w-4" />
-            Κλείστε γνωριμία
+            Κλείστε ραντεβού
           </Link>
           <a
             href={`tel:${SITE.phonesTel[0]}`}
-            className="inline-flex items-center justify-center gap-2 rounded-md border border-primary-foreground/30 bg-transparent px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+            className="inline-flex items-center justify-center gap-2 rounded-md border border-brand-blue-foreground/30 bg-transparent px-6 py-3.5 text-sm font-semibold text-brand-blue-foreground transition-colors hover:bg-brand-blue-foreground/10"
           >
             <Phone className="h-4 w-4" />
             {SITE.phones[0]}
