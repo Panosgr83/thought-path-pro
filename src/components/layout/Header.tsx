@@ -8,6 +8,7 @@ import logo from "@/assets/logo.png";
 const NAV = [
   { to: "/", label: "Αρχική" },
   { to: "/services", label: "Υπηρεσίες" },
+  { to: "/seminaria", label: "Σεμινάρια" },
   { to: "/about", label: "Βιογραφικό" },
   { to: "/contact", label: "Επικοινωνία" },
 ] as const;
