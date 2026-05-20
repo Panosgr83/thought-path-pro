@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Award, GraduationCap, Briefcase, BookOpen, Check } from "lucide-react";
 import { SITE } from "@/lib/site";
+import portrait from "@/assets/hero-portrait.png";
 
 const TITLE = `Βιογραφικό — Ευδοκία Τίντζη-Σαββιδάκη | Ψυχολόγος Γαλάτσι`;
 const DESCRIPTION =
@@ -106,17 +107,42 @@ function SectionHeader({
 function ViografikoPage() {
   return (
     <>
-      <section className="bg-secondary/40 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-8">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            Βιογραφικό
-          </span>
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-ink md:text-6xl">
-            Ευδοκία Τίντζη-Σαββιδάκη
-          </h1>
-          <p className="mt-4 text-base font-medium text-muted-foreground md:text-lg">
-            Κοινωνική Ψυχολόγος · Παιδοψυχολόγος
-          </p>
+      <section className="relative overflow-hidden bg-secondary/40">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-14 md:px-8 md:py-24">
+          <div className="order-2 md:order-1">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+              Βιογραφικό
+            </span>
+            <h1 className="mt-4 font-serif text-4xl leading-tight text-ink md:text-6xl">
+              Ευδοκία Τίντζη-Σαββιδάκη
+            </h1>
+            <p className="mt-4 text-base font-medium text-muted-foreground md:text-lg">
+              Κοινωνική Ψυχολόγος · Παιδοψυχολόγος
+            </p>
+          </div>
+          <div className="order-1 md:order-2">
+            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-card shadow-lg md:max-w-md">
+              <img
+                src={portrait}
+                alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος & Παιδοψυχολόγος"
+                className="h-full w-full object-cover object-top"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full-width photo band */}
+      <section className="bg-background">
+        <div className="relative h-56 w-full overflow-hidden sm:h-72 md:h-96 lg:h-[28rem]">
+          <img
+            src={portrait}
+            alt="Ευδοκία Τίντζη-Σαββιδάκη"
+            className="h-full w-full object-cover object-[center_20%]"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
         </div>
       </section>
 
