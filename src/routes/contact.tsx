@@ -163,9 +163,9 @@ function ContactPage() {
                   <input type="checkbox" required className="mt-0.5 h-4 w-4 rounded border-input" />
                   <span>Αποδέχομαι την επεξεργασία των στοιχείων μου σύμφωνα με την <a href="/privacy" className="text-primary hover:underline">Πολιτική Απορρήτου</a>.</span>
                 </label>
-                <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-                  <Send className="h-4 w-4" />
-                  Ζητήστε ραντεβού
+                <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60">
+                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                  {loading ? "Αποστολή…" : "Ζητήστε ραντεβού"}
                 </button>
               </form>
             )}
