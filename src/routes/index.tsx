@@ -10,9 +10,9 @@ import { ContactPreview } from "@/components/sections/ContactPreview";
 import { SITE, FAQ, SERVICES } from "@/lib/site";
 import { useReveal } from "@/hooks/use-reveal";
 
-const TITLE = `${SITE.name} — Κέντρο Ψυχικής Υγείας στο Γαλάτσι`;
+const TITLE = `Ψυχολόγος Γαλάτσι — ${SITE.name} | Κέντρο Ψυχικής Υγείας`;
 const DESCRIPTION =
-  "Επαγγελματική ψυχολογική υποστήριξη στο Γαλάτσι. Συμβουλευτική, ψυχοθεραπεία, life coaching, παιδική & εφηβική ψυχολογία, ΔΕΠΥ. Κλείστε ραντεβού γνωριμίας.";
+  "Ψυχολόγος στο Γαλάτσι. Συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική & εφηβική ψυχολογία, ΔΕΠΥ, επαγγελματικός προσανατολισμός. Ραντεβού γνωριμίας στο Διά… Λόγου Νόησις.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
