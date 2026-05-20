@@ -172,4 +172,29 @@
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Reveal on scroll — diakritiko, hxos chamilos */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .fade-up { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Section eyebrow — used across sections for consistency */
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
 }

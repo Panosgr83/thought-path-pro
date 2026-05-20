@@ -4,9 +4,9 @@ import { SITE } from "@/lib/site";
 
 export function FinalCTA() {
   return (
-    <section className="bg-brand-blue py-20 text-brand-blue-foreground md:py-28">
+    <section className="reveal bg-brand-blue py-24 text-brand-blue-foreground md:py-32">
       <div className="mx-auto max-w-3xl px-4 text-center md:px-8">
-        <h2 className="font-serif text-3xl leading-tight md:text-5xl">
+        <h2 className="font-serif text-3xl leading-[1.05] tracking-[-0.02em] md:text-5xl">
           Κάντε το πρώτο βήμα για μια καλύτερη ζωή
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-brand-blue-foreground/85">

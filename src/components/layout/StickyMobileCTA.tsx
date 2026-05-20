@@ -7,7 +7,17 @@ export function StickyMobileCTA() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 400);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        // Hysteresis: appears past 480, disappears under 320 — no flicker zone
+        setShow((prev) => (prev ? y > 320 : y > 480));
+        ticking = false;
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -16,11 +26,11 @@ export function StickyMobileCTA() {
   return (
     <div
       aria-hidden={!show}
-      className={`fixed inset-x-0 bottom-0 z-40 transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 transform-gpu transition-transform duration-300 ease-out md:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="flex gap-2 border-t border-border bg-background/95 p-3 backdrop-blur-md shadow-[0_-4px_16px_rgba(14,27,26,0.06)]">
+      <div className="flex gap-2 border-t border-border bg-background/95 px-3 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-3 backdrop-blur-md shadow-[0_-4px_16px_rgba(14,27,26,0.06)]">
         <a
           href={`tel:${SITE.phonesTel[0]}`}
           className="flex flex-1 items-center justify-center gap-2 rounded-md bg-warm py-3 text-sm font-semibold text-warm-foreground"

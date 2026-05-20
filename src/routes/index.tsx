@@ -8,6 +8,7 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ContactPreview } from "@/components/sections/ContactPreview";
 import { SITE, FAQ, SERVICES } from "@/lib/site";
+import { useReveal } from "@/hooks/use-reveal";
 
 const TITLE = `${SITE.name} — Κέντρο Ψυχικής Υγείας στο Γαλάτσι`;
 const DESCRIPTION =
@@ -76,6 +77,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useReveal();
   return (
     <>
       <Hero />

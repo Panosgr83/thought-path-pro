@@ -4,7 +4,7 @@ import aboutPortrait from "@/assets/about-portrait.png";
 
 export function AboutPreview() {
   return (
-    <section className="bg-secondary/40 py-20 md:py-28">
+    <section className="reveal bg-secondary/40 py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:items-center md:px-8">
         <div className="relative">
           <div className="overflow-hidden rounded-2xl bg-secondary shadow-[0_20px_60px_-20px_rgba(239,106,59,0.2)]">
@@ -22,10 +22,8 @@ export function AboutPreview() {
         </div>
 
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            Ποια είμαστε
-          </span>
-          <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">
+          <span className="eyebrow">Ποια είμαστε</span>
+          <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
             Ευδοκία Τίντζη-Σαββιδάκη
           </h2>
           <p className="mt-2 text-sm font-medium text-muted-foreground">
