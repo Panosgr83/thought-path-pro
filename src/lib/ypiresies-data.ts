@@ -56,6 +56,7 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     id: "symvouleutiki",
+    icon: Brain,
     emoji: "🧠",
     title: "Συμβουλευτική & Ψυχοθεραπεία",
     subtitle: "Ατομική υποστήριξη για προσωπική ανάπτυξη",
@@ -88,6 +89,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "zeugous",
+    icon: HeartHandshake,
     emoji: "💑",
     title: "Συμβουλευτική Ζεύγους",
     subtitle: "Για σχέσεις που αξίζει να επενδύσετε",
@@ -114,6 +116,8 @@ export const SERVICES: Service[] = [
   },
   {
     id: "life-coaching",
+    icon: Target,
+    hidden: true,
     emoji: "🎯",
     title: "Life Coaching",
     subtitle: "Χαράξτε το μονοπάτι για τη ζωή που θέλετε",
@@ -146,6 +150,8 @@ export const SERVICES: Service[] = [
   },
   {
     id: "nlp-coaching",
+    icon: Sparkles,
+    hidden: true,
     emoji: "🔄",
     title: "NLP Coaching",
     subtitle: "Αναπρογραμματίστε τον τρόπο σκέψης σας",
@@ -172,6 +178,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "goneki",
+    icon: Users,
     emoji: "👨‍👩‍👧",
     title: "Γονεϊκή Καθοδήγηση",
     subtitle: "Υποστήριξη για μια πιο αποτελεσματική γονεϊκότητα",
@@ -198,6 +205,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "epaggelmatiki",
+    icon: Briefcase,
     emoji: "💼",
     title: "Επαγγελματική Συμβουλευτική",
     subtitle: "Βρείτε την επαγγελματική πορεία που σας ταιριάζει",
@@ -224,6 +232,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "paidiki",
+    icon: Sprout,
     emoji: "🌱",
     title: "Παιδική & Εφηβική Ψυχολογία",
     subtitle: "Υποστήριξη για κάθε στάδιο ανάπτυξης",
@@ -250,6 +259,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "depy",
+    icon: Zap,
     emoji: "⚡",
     title: "Δ.Ε.Π.Υ.",
     subtitle: "Διαταραχή Ελλειμματικής Προσοχής / Υπερκινητικότητα",
@@ -276,6 +286,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "morphes-vias",
+    icon: ShieldAlert,
     emoji: "🛡️",
     title: "Μορφές Βίας",
     subtitle: "Ψηφιακή βία, bullying και οικογενειακή βία",
@@ -302,6 +313,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "omadiki",
+    icon: UsersRound,
     emoji: "🤝",
     title: "Ομαδική Θεραπεία",
     subtitle: "Η δύναμη της ομάδας στη θεραπευτική διαδικασία",
@@ -328,6 +340,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "sexoualikotita",
+    icon: Heart,
     emoji: "🌿",
     title: "Σεξουαλικότητα",
     subtitle: "Ολιστική υποστήριξη για ζητήματα σεξουαλικής υγείας",
@@ -354,6 +367,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "hlikiomenoi",
+    icon: Sun,
     emoji: "🌅",
     title: "Ηλικιωμένοι & Άνοια",
     subtitle: "Υποστήριξη για τρίτη ηλικία και φροντιστές",
