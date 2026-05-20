@@ -202,7 +202,7 @@ function ServiceDetail() {
               <div>
                 <h3 className="font-serif text-xl text-ink">Συχνές ερωτήσεις</h3>
                 <dl className="mt-4 space-y-4">
-                  {s.faq.map((item) => (
+                  {s.faq.map((item: { q: string; a: string }) => (
                     <div key={item.q} className="rounded-xl border border-border bg-card p-5">
                       <dt className="font-semibold text-ink">{item.q}</dt>
                       <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
