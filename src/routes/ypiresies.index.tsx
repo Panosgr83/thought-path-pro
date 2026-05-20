@@ -8,7 +8,7 @@ const TITLE = `Υπηρεσίες Ψυχολόγου στο Γαλάτσι — $
 const DESCRIPTION =
   "12 υπηρεσίες ψυχικής υγείας στο Γαλάτσι: συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική & εφηβική ψυχολογία, ΔΕΠΥ, coaching, γονεϊκή καθοδήγηση και άλλα.";
 
-export const Route = createFileRoute("/ypiresies")({
+export const Route = createFileRoute("/ypiresies/")({
   head: () => ({
     meta: [
       { title: TITLE },
