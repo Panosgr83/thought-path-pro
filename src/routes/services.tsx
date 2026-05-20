@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 import { SERVICES, SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
-const TITLE = `Υπηρεσίες — ${SITE.name}`;
+const TITLE = `Υπηρεσίες Ψυχολόγου στο Γαλάτσι — ${SITE.name}`;
 const DESCRIPTION =
-  "Όλες οι υπηρεσίες ψυχικής υγείας: συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική ψυχολογία, ΔΕΠΥ, life & NLP coaching, γονεϊκή καθοδήγηση και άλλα.";
+  "12 υπηρεσίες ψυχικής υγείας στο Γαλάτσι: συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική & εφηβική ψυχολογία, ΔΕΠΥ, life & NLP coaching, επαγγελματικός προσανατολισμός, γονεϊκή καθοδήγηση.";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -14,7 +14,9 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: `${SITE.url}/services` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/services` }],
   }),
   component: ServicesPage,
 });
