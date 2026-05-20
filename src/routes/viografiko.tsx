@@ -108,8 +108,8 @@ function ViografikoPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-secondary/40">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-14 md:px-8 md:py-24">
-          <div className="order-2 md:order-1">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-8 md:py-24">
+          <div>
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
               Βιογραφικό
             </span>
@@ -120,18 +120,9 @@ function ViografikoPage() {
               Κοινωνική Ψυχολόγος · Παιδοψυχολόγος
             </p>
           </div>
-          <div className="order-1 md:order-2">
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-border bg-card shadow-lg md:max-w-md">
-              <img
-                src={portrait}
-                alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος & Παιδοψυχολόγος"
-                className="h-full w-full object-cover object-top"
-                loading="eager"
-              />
-            </div>
-          </div>
         </div>
       </section>
+
 
       {/* Full-width photo band */}
       <section className="bg-background">
