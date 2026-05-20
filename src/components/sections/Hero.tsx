@@ -19,24 +19,25 @@ export function Hero() {
         className="absolute inset-0 -z-10 bg-gradient-to-r from-background/95 via-background/80 to-background/40 md:from-background/90 md:via-background/60 md:to-background/10"
       />
 
-      <div className="mx-auto max-w-6xl px-4 pb-20 pt-12 md:px-8 md:pb-28 md:pt-24 lg:min-h-[640px]">
+      <div className="mx-auto max-w-6xl px-4 pb-24 pt-14 md:px-8 md:pb-36 md:pt-28 lg:min-h-[680px]">
         <div className="fade-up flex max-w-2xl flex-col justify-center">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             {SITE.tagline}
           </span>
 
-          <h1 className="mt-6 font-serif text-4xl leading-[1.05] text-ink md:text-6xl">
-            Καλωσορίσατε στο <span className="text-primary">Διά… Λόγου Νόησις</span>
+          <h1 className="mt-7 font-serif text-[2.6rem] leading-[1.02] tracking-[-0.025em] text-ink sm:text-5xl md:text-[4.25rem] md:leading-[1.0]">
+            Καλωσορίσατε στο{" "}
+            <span className="text-primary">Διά… Λόγου Νόησις</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Κέντρο Ψυχικής Υγείας που προσφέρει επαγγελματική υποστήριξη για την
             ψυχική σας ευεξία — σε έναν ζεστό, φιλόξενο χώρο όπου μπορείτε να
             μιλήσετε ελεύθερα.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             {/* Primary CTA (coral) → Υπηρεσίες, secondary (blue) → Επικοινωνία.
                 Mobile gets click-to-call as third option for friction reduction. */}
             <Link
