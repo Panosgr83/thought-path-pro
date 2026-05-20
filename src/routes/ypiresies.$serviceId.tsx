@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, User } from "lucide-react";
 import { SITE } from "@/lib/site";
-import { SERVICES, TONE_BG, getService, type Service } from "@/lib/ypiresies-data";
+import { SERVICES, TONE_BG, TONE_TINT, getService, type Service } from "@/lib/ypiresies-data";
+import heroBg from "@/assets/service-hero-bg.jpg";
 
 export const Route = createFileRoute("/ypiresies/$serviceId")({
   loader: ({ params }) => {
@@ -40,13 +41,22 @@ export const Route = createFileRoute("/ypiresies/$serviceId")({
 
 function ServiceDetailPage() {
   const { service } = Route.useLoaderData() as { service: Service };
-  const related = SERVICES.filter((s) => s.id !== service.id).slice(0, 3);
+  const Icon = service.icon;
+  const related = SERVICES.filter((s) => s.id !== service.id && !s.hidden).slice(0, 3);
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-secondary/40 py-12 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 md:px-8">
+      {/* Hero — background photo + semi-transparent color wash per service */}
+      <section className="relative overflow-hidden py-12 md:py-20">
+        <img
+          src={heroBg}
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className={`absolute inset-0 ${TONE_TINT[service.tone]}`} aria-hidden />
+        <div className="absolute inset-0 bg-background/55 backdrop-blur-[2px]" aria-hidden />
+        <div className="relative mx-auto max-w-4xl px-4 md:px-8">
           <Link
             to="/ypiresies"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -55,16 +65,16 @@ function ServiceDetailPage() {
           </Link>
           <div className="mt-8 flex flex-col items-start gap-6 md:flex-row md:items-center">
             <div
-              className={`flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl text-4xl ${TONE_BG[service.tone]}`}
+              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-border bg-card/90 text-primary shadow-sm backdrop-blur"
               aria-hidden
             >
-              {service.emoji}
+              <Icon className="h-7 w-7" />
             </div>
             <div>
               <h1 className="font-serif text-3xl leading-tight text-ink md:text-5xl">
                 {service.title}
               </h1>
-              <p className="mt-3 text-base text-muted-foreground md:text-lg">
+              <p className="mt-3 text-base text-foreground/80 md:text-lg">
                 {service.subtitle}
               </p>
             </div>
