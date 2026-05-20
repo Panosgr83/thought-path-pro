@@ -4,11 +4,11 @@ import { SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { SERVICES } from "@/lib/ypiresies-data";
 
-const VISIBLE_SERVICES = SERVICES.filter((s) => !s.hidden);
+const VISIBLE_SERVICES = SERVICES.filter((service) => !service.hidden);
 
 const TITLE = `Υπηρεσίες Ψυχολόγου στο Γαλάτσι — ${SITE.name}`;
 const DESCRIPTION =
-  "12 υπηρεσίες ψυχικής υγείας στο Γαλάτσι: συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική & εφηβική ψυχολογία, ΔΕΠΥ, coaching, γονεϊκή καθοδήγηση και άλλα.";
+  "Υπηρεσίες ψυχολογικής φροντίδας στο Γαλάτσι: συμβουλευτική, ψυχοθεραπεία, ζευγάρι, παιδική & εφηβική ψυχολογία, ΔΕΠΥ και συμβουλευτική γονέων.";
 
 export const Route = createFileRoute("/ypiresies/")({
   head: () => ({
@@ -36,8 +36,8 @@ function YpiresiesPage() {
             Ολοκληρωμένη ψυχολογική φροντίδα
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Εξειδικευμένες υπηρεσίες για παιδιά, εφήβους, ενήλικες, ζευγάρια
-            και οικογένειες — προσαρμοσμένες στις δικές σας ανάγκες.
+            Εξειδικευμένες υπηρεσίες για παιδιά, εφήβους, ενήλικες, ζευγάρια και οικογένειες —
+            προσαρμοσμένες στις δικές σας ανάγκες.
           </p>
         </div>
       </section>
@@ -60,9 +60,7 @@ function YpiresiesPage() {
                     <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
                       {s.subtitle}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {s.short}
-                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.short}</p>
                   </div>
                   <Link
                     to="/ypiresies/$serviceId"
@@ -84,8 +82,8 @@ function YpiresiesPage() {
             Δεν ξέρετε από πού να ξεκινήσετε;
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Επικοινωνήστε μαζί μας και θα σας βοηθήσουμε να βρείτε την υπηρεσία
-            που ταιριάζει στις δικές σας ανάγκες.
+            Επικοινωνήστε μαζί μας και θα σας βοηθήσουμε να βρείτε την υπηρεσία που ταιριάζει στις
+            δικές σας ανάγκες.
           </p>
           <Link
             to="/contact"

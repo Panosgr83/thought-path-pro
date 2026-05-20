@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { SERVICES } from "@/lib/site";
+import { SERVICES } from "@/lib/ypiresies-data";
 
 export function ServicesPreview() {
-  // Show 8 most relevant on home, full 12 live on /services
-  const preview = SERVICES.slice(0, 8);
+  const preview = SERVICES.filter((service) => !service.hidden).slice(0, 8);
 
   return (
     <section className="reveal bg-background py-24 md:py-32">
@@ -17,19 +16,19 @@ export function ServicesPreview() {
             </h2>
           </div>
           <Link
-            to="/services"
+            to="/ypiresies"
             className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
           >
-            Και οι 12 υπηρεσίες <ArrowUpRight className="h-4 w-4" />
+            Όλες οι υπηρεσίες <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {preview.map((s) => (
             <Link
-              key={s.slug}
-              to="/services/$slug"
-              params={{ slug: s.slug }}
+              key={s.id}
+              to="/ypiresies/$serviceId"
+              params={{ serviceId: s.id }}
               className="group flex flex-col gap-4 bg-card p-6 transition-colors hover:bg-secondary/40"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">

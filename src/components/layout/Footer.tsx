@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Globe } from "lucide-react";
-import { SITE, SERVICES } from "@/lib/site";
+import { SITE, SERVICES, getServiceIdFromSlug } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -13,8 +13,7 @@ export function Footer() {
               {SITE.tagline}
             </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Ασφαλές, υποστηρικτικό περιβάλλον για ψυχολογική φροντίδα κάθε
-              ηλικίας στο Γαλάτσι.
+              Ασφαλές, υποστηρικτικό περιβάλλον για ψυχολογική φροντίδα κάθε ηλικίας στο Γαλάτσι.
             </p>
           </div>
 
@@ -23,12 +22,36 @@ export function Footer() {
               Πλοήγηση
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-foreground/80">
-              <li><Link to="/" className="hover:text-primary">Αρχική</Link></li>
-              <li><Link to="/services" className="hover:text-primary">Υπηρεσίες</Link></li>
-              <li><Link to="/about" className="hover:text-primary">Βιογραφικό</Link></li>
-              <li><Link to="/contact" className="hover:text-primary">Επικοινωνία</Link></li>
-              <li><Link to="/privacy" className="hover:text-primary">Πολιτική Απορρήτου</Link></li>
-              <li><Link to="/terms" className="hover:text-primary">Όροι χρήσης</Link></li>
+              <li>
+                <Link to="/" className="hover:text-primary">
+                  Αρχική
+                </Link>
+              </li>
+              <li>
+                <Link to="/ypiresies" className="hover:text-primary">
+                  Υπηρεσίες
+                </Link>
+              </li>
+              <li>
+                <Link to="/viografiko" className="hover:text-primary">
+                  Βιογραφικό
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary">
+                  Επικοινωνία
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="hover:text-primary">
+                  Πολιτική Απορρήτου
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-primary">
+                  Όροι χρήσης
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -40,8 +63,8 @@ export function Footer() {
               {SERVICES.slice(0, 6).map((s) => (
                 <li key={s.slug}>
                   <Link
-                    to="/services/$slug"
-                    params={{ slug: s.slug }}
+                    to="/ypiresies/$serviceId"
+                    params={{ serviceId: getServiceIdFromSlug(s.slug) }}
                     className="hover:text-primary"
                   >
                     {s.title}
@@ -49,7 +72,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <Link to="/services" className="text-primary hover:underline">
+                <Link to="/ypiresies" className="text-primary hover:underline">
                   Όλες οι υπηρεσίες →
                 </Link>
               </li>
@@ -63,23 +86,34 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-foreground/80">
               <li className="flex gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>{SITE.address.street}, {SITE.address.city} {SITE.address.postal}</span>
+                <span>
+                  {SITE.address.street}, {SITE.address.city} {SITE.address.postal}
+                </span>
               </li>
               {SITE.phones.map((p, i) => (
                 <li key={p} className="flex gap-2">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <a href={`tel:${SITE.phonesTel[i]}`} className="hover:text-primary">{p}</a>
+                  <a href={`tel:${SITE.phonesTel[i]}`} className="hover:text-primary">
+                    {p}
+                  </a>
                 </li>
               ))}
               {SITE.emails.map((e) => (
                 <li key={e} className="flex gap-2">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                  <a href={`mailto:${e}`} className="hover:text-primary break-all">{e}</a>
+                  <a href={`mailto:${e}`} className="hover:text-primary break-all">
+                    {e}
+                  </a>
                 </li>
               ))}
               <li className="flex gap-2">
                 <Globe className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`https://${SITE.externalSite}`} target="_blank" rel="noreferrer" className="hover:text-primary">
+                <a
+                  href={`https://${SITE.externalSite}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary"
+                >
                   {SITE.externalSite}
                 </a>
               </li>
@@ -89,14 +123,15 @@ export function Footer() {
 
         <div className="mt-12 space-y-3 border-t border-border pt-8 text-xs leading-relaxed text-muted-foreground">
           <p>
-            <strong className="text-foreground/80">Σημαντικό:</strong> Οι πληροφορίες
-            του ιστοτόπου έχουν ενημερωτικό χαρακτήρα και δεν αντικαθιστούν την
-            επαγγελματική κλινική εκτίμηση. Σε περίπτωση επείγοντος καλέστε{" "}
-            <strong className="text-foreground/90">166</strong> ή τη Γραμμή SOS{" "}
-            <strong className="text-foreground/90">1018</strong>, ή πηγαίνετε στο
+            <strong className="text-foreground/80">Σημαντικό:</strong> Οι πληροφορίες του ιστοτόπου
+            έχουν ενημερωτικό χαρακτήρα και δεν αντικαθιστούν την επαγγελματική κλινική εκτίμηση. Σε
+            περίπτωση επείγοντος καλέστε <strong className="text-foreground/90">166</strong> ή τη
+            Γραμμή SOS <strong className="text-foreground/90">1018</strong>, ή πηγαίνετε στο
             πλησιέστερο εφημερεύον νοσοκομείο.
           </p>
-          <p>© {new Date().getFullYear()} {SITE.name}. Με επιφύλαξη παντός δικαιώματος.</p>
+          <p>
+            © {new Date().getFullYear()} {SITE.name}. Με επιφύλαξη παντός δικαιώματος.
+          </p>
         </div>
       </div>
     </footer>

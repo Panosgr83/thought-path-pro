@@ -1,12 +1,15 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, Phone, Award } from "lucide-react";
-import { SERVICES, SITE } from "@/lib/site";
+import { SERVICES, SITE, getServiceIdFromSlug } from "@/lib/site";
 
 export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
     const service = SERVICES.find((s) => s.slug === params.slug);
     if (!service) throw notFound();
-    return { service };
+    return redirect({
+      to: `/ypiresies/${getServiceIdFromSlug(service.slug)}`,
+      throw: true,
+    });
   },
   head: ({ loaderData }) => {
     const s = loaderData?.service;

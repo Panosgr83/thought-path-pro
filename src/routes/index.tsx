@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
             addressCountry: SITE.address.country,
           },
           knowsAbout: SERVICES.map((s) => s.title),
-          serviceType: ["Counseling", "Psychotherapy", "Life Coaching"],
+          serviceType: ["Counseling", "Psychotherapy", "Psychological support"],
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "5.0",

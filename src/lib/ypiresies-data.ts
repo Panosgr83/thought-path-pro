@@ -1,19 +1,32 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Brain, HeartHandshake, Users, Sprout, Briefcase,
-  Zap, ShieldAlert, UsersRound, Heart, Sun, Target, Sparkles,
+  Brain,
+  HeartHandshake,
+  Users,
+  Sprout,
+  Briefcase,
+  Zap,
+  ShieldAlert,
+  UsersRound,
+  Heart,
+  Sun,
 } from "lucide-react";
 
 export type Tone =
-  | "teal" | "rose" | "amber" | "sky" | "green" | "slate"
-  | "emerald" | "orange" | "red" | "cyan" | "yellow";
+  | "teal"
+  | "rose"
+  | "green"
+  | "slate"
+  | "emerald"
+  | "orange"
+  | "red"
+  | "cyan"
+  | "yellow";
 
 // Semi-transparent color washes used as a tint over the hero background photo.
 export const TONE_TINT: Record<Tone, string> = {
   teal: "bg-teal-200/40",
   rose: "bg-rose-200/40",
-  amber: "bg-amber-200/40",
-  sky: "bg-sky-200/40",
   green: "bg-green-200/40",
   slate: "bg-slate-300/40",
   emerald: "bg-emerald-200/40",
@@ -27,8 +40,6 @@ export const TONE_TINT: Record<Tone, string> = {
 export const TONE_BG: Record<Tone, string> = {
   teal: "bg-primary/10 text-primary",
   rose: "bg-primary/10 text-primary",
-  amber: "bg-primary/10 text-primary",
-  sky: "bg-primary/10 text-primary",
   green: "bg-primary/10 text-primary",
   slate: "bg-primary/10 text-primary",
   emerald: "bg-primary/10 text-primary",
@@ -115,68 +126,6 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    id: "life-coaching",
-    icon: Target,
-    hidden: true,
-    emoji: "🎯",
-    title: "Life Coaching",
-    subtitle: "Χαράξτε το μονοπάτι για τη ζωή που θέλετε",
-    short: "Χαράξτε το μονοπάτι για τη ζωή που θέλετε.",
-    tone: "amber",
-    description: [
-      "Το Life Coaching είναι μια συνεργατική διαδικασία που εστιάζει στο παρόν και το μέλλον, βοηθώντας σας να εντοπίσετε τι θέλετε πραγματικά από τη ζωή σας και να αναπτύξετε ένα σαφές σχέδιο δράσης.",
-      "Σε αντίθεση με την ψυχοθεραπεία που εστιάζει στη θεραπεία παρελθοντικών τραυμάτων, το coaching εστιάζει στην ανάπτυξη και στην επίτευξη στόχων.",
-      "Μέσα από ισχυρές ερωτήσεις και αποτελεσματικές τεχνικές, ανακαλύπτετε τις δυνατότητές σας και ξεπερνάτε τα εμπόδια που σας συγκρατούν.",
-    ],
-    benefits: [
-      "Καθορισμός σαφών στόχων",
-      "Αύξηση αυτοπεποίθησης",
-      "Βελτίωση ισορροπίας ζωής-εργασίας",
-      "Ανάπτυξη leadership δεξιοτήτων",
-      "Υπέρβαση περιοριστικών πεποιθήσεων",
-    ],
-    forWhom: [
-      "Όσοι θέλουν να αλλάξουν κατεύθυνση στη ζωή τους",
-      "Επαγγελματίες που θέλουν να εξελιχθούν",
-      "Άτομα σε σταυροδρόμι αποφάσεων",
-      "Όσοι επιθυμούν καλύτερη ποιότητα ζωής",
-    ],
-    process: [
-      "Αξιολόγηση τρέχουσας κατάστασης",
-      "Καθορισμός οράματος και στόχων",
-      "Ανάπτυξη σχεδίου δράσης",
-      "Εφαρμογή και παρακολούθηση προόδου",
-    ],
-  },
-  {
-    id: "nlp-coaching",
-    icon: Sparkles,
-    hidden: true,
-    emoji: "🔄",
-    title: "NLP Coaching",
-    subtitle: "Αναπρογραμματίστε τον τρόπο σκέψης σας",
-    short: "Αναπρογραμματίστε τον τρόπο σκέψης σας.",
-    tone: "sky",
-    description: [
-      "Ο Νευρογλωσσικός Προγραμματισμός (NLP) είναι μια ισχυρή μέθοδος που εξερευνά τη σύνδεση μεταξύ νευρολογικών διεργασιών, γλώσσας και συμπεριφορικών μοτίβων.",
-      "Μέσα από τεχνικές NLP, μαθαίνετε να αναγνωρίζετε και να αλλάζετε τα μοτίβα σκέψης που σας εμποδίζουν, να βελτιώνετε την επικοινωνία σας και να επιτυγχάνετε τους στόχους σας πιο αποτελεσματικά.",
-      "Το NLP Coaching συνδυάζει την επιστήμη του νου με πρακτικές τεχνικές που μπορείτε να εφαρμόσετε άμεσα στη ζωή σας.",
-    ],
-    benefits: [
-      "Απελευθέρωση από φοβίες και φράγματα",
-      "Βελτίωση επικοινωνιακών δεξιοτήτων",
-      "Ενίσχυση κινητοποίησης",
-      "Αλλαγή περιοριστικών πεποιθήσεων",
-      "Ανάπτυξη θετικής νοοτροπίας",
-    ],
-    forWhom: [
-      "Όσοι θέλουν να αλλάξουν συνήθειες",
-      "Επαγγελματίες που θέλουν να βελτιώσουν την απόδοσή τους",
-      "Άτομα με φοβίες ή αρνητικά μοτίβα",
-      "Όσοι ενδιαφέρονται για αυτο-βελτίωση",
-    ],
-  },
-  {
     id: "goneki",
     icon: Users,
     emoji: "👨‍👩‍👧",
@@ -214,7 +163,7 @@ export const SERVICES: Service[] = [
     description: [
       "Η επαγγελματική συμβουλευτική σας βοηθά να κατανοήσετε τις αξίες, τις δεξιότητες και τα ενδιαφέροντά σας ώστε να λάβετε σωστές επαγγελματικές αποφάσεις.",
       "Ανεξάρτητα από το αν βρίσκεστε στην αρχή της καριέρας σας, επιθυμείτε αλλαγή επαγγέλματος ή αντιμετωπίζετε δυσκολίες στον επαγγελματικό χώρο, προσφέρουμε εξατομικευμένη καθοδήγηση.",
-      "Χρησιμοποιούμε αξιολογητικά εργαλεία, τεχνικές coaching και συμβουλευτικές μεθόδους για να σας βοηθήσουμε να βρείτε τον δρόμο σας.",
+      "Χρησιμοποιούμε αξιολογητικά εργαλεία και συμβουλευτικές μεθόδους για να σας βοηθήσουμε να βρείτε τον δρόμο σας.",
     ],
     benefits: [
       "Διερεύνηση επαγγελματικής ταυτότητας",
@@ -395,5 +344,5 @@ export const SERVICES: Service[] = [
 ];
 
 export function getService(id: string): Service | undefined {
-  return SERVICES.find((s) => s.id === id);
+  return SERVICES.find((s) => s.id === id && !s.hidden);
 }

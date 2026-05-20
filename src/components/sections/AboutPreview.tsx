@@ -17,7 +17,9 @@ export function AboutPreview() {
           </div>
           <div className="absolute -bottom-6 -right-4 hidden rounded-xl border border-border bg-card p-4 shadow-lg md:block">
             <div className="text-3xl font-serif text-primary">7+</div>
-            <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">χρόνια εμπειρίας</div>
+            <div className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+              χρόνια εμπειρίας
+            </div>
           </div>
         </div>
 
@@ -31,18 +33,17 @@ export function AboutPreview() {
           </p>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
             <p>
-              Με πολυετή εκπαίδευση και εμπειρία στον χώρο της ψυχικής υγείας,
-              προσφέρω ολοκληρωμένες υπηρεσίες προσαρμοσμένες στις ανάγκες κάθε
-              ατόμου, ζευγαριού ή οικογένειας.
+              Με πολυετή εκπαίδευση και εμπειρία στον χώρο της ψυχικής υγείας, προσφέρω
+              ολοκληρωμένες υπηρεσίες προσαρμοσμένες στις ανάγκες κάθε ατόμου, ζευγαριού ή
+              οικογένειας.
             </p>
             <p>
-              Μέλος της Ελληνικής και Ευρωπαϊκής Εταιρείας Συμβουλευτικής. Η
-              προσέγγισή μου είναι συνθετική και επικεντρώνεται στον σεβασμό
-              της μοναδικότητας του κάθε ανθρώπου.
+              Μέλος της Ελληνικής και Ευρωπαϊκής Εταιρείας Συμβουλευτικής. Η προσέγγισή μου είναι
+              συνθετική και επικεντρώνεται στον σεβασμό της μοναδικότητας του κάθε ανθρώπου.
             </p>
           </div>
           <Link
-            to="/about"
+            to="/viografiko"
             className="mt-8 inline-flex items-center gap-2 rounded-md border border-primary/30 bg-card px-5 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             Διαβάστε το πλήρες βιογραφικό
