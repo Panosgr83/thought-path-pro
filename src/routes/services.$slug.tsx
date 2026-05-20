@@ -101,7 +101,7 @@ function ServiceDetail() {
 
             <h2 className="mt-12 font-serif text-2xl text-ink">Τι περιλαμβάνει</h2>
             <ul className="mt-5 space-y-3">
-              {s.bullets.map((b) => (
+              {s.bullets.map((b: string) => (
                 <li key={b} className="flex gap-3 text-base text-foreground/85">
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
                     <Check className="h-3 w-3" />
