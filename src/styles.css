@@ -64,36 +64,36 @@
 
 :root {
   --radius: 0.75rem;
-  /* Surface — pure-ish warm white, ζεστή φιλόξενη αίσθηση v1 */
-  --background: oklch(0.99 0.005 60);
-  --foreground: oklch(0.24 0.015 50);
+  /* Surface — clean white με ελαφρύ warm undertone */
+  --background: oklch(0.995 0.003 75);
+  --foreground: oklch(0.26 0.012 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.015 50);
+  --card-foreground: oklch(0.26 0.012 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.015 50);
-  /* Primary — warm coral / peach (v1 brand) ~#EF6A3B */
-  --primary: oklch(0.68 0.165 42);
-  --primary-foreground: oklch(0.99 0.005 60);
-  --primary-soft: oklch(0.92 0.06 50);
-  --ink: oklch(0.2 0.015 50);
-  /* Calm brand blue — secondary CTA (v1) ~#234B8E */
-  --brand-blue: oklch(0.46 0.13 260);
-  --brand-blue-foreground: oklch(0.99 0.005 60);
-  --brand-blue-soft: oklch(0.93 0.04 255);
-  /* Warm amber — μόνο για stars/ratings */
+  --popover-foreground: oklch(0.26 0.012 250);
+  /* Primary — warm coral #E07A5F */
+  --primary: oklch(0.685 0.135 35);
+  --primary-foreground: oklch(0.995 0.003 75);
+  --primary-soft: oklch(0.93 0.05 38);
+  --ink: oklch(0.22 0.015 250);
+  /* Calm brand blue #5B8FBF — secondary CTA */
+  --brand-blue: oklch(0.645 0.09 245);
+  --brand-blue-foreground: oklch(0.995 0.003 75);
+  --brand-blue-soft: oklch(0.94 0.035 245);
+  /* Warm amber — stars/ratings */
   --warm: oklch(0.8 0.15 80);
-  --warm-foreground: oklch(0.24 0.015 50);
-  --secondary: oklch(0.97 0.014 55);
-  --secondary-foreground: oklch(0.3 0.04 50);
-  --muted: oklch(0.965 0.01 55);
-  --muted-foreground: oklch(0.5 0.018 50);
-  --accent: oklch(0.95 0.035 50);
-  --accent-foreground: oklch(0.34 0.06 45);
+  --warm-foreground: oklch(0.26 0.012 250);
+  --secondary: oklch(0.97 0.008 250);
+  --secondary-foreground: oklch(0.32 0.02 250);
+  --muted: oklch(0.965 0.006 250);
+  --muted-foreground: oklch(0.52 0.015 250);
+  --accent: oklch(0.95 0.035 38);
+  --accent-foreground: oklch(0.34 0.06 38);
   --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.99 0.005 60);
-  --border: oklch(0.92 0.012 55);
-  --input: oklch(0.92 0.012 55);
-  --ring: oklch(0.68 0.165 42);
+  --destructive-foreground: oklch(0.995 0.003 75);
+  --border: oklch(0.92 0.008 250);
+  --input: oklch(0.92 0.008 250);
+  --ring: oklch(0.685 0.135 35);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
