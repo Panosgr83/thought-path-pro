@@ -6,13 +6,11 @@ export function ContactPreview() {
     `${SITE.address.street}, ${SITE.address.city} ${SITE.address.postal}`
   );
   return (
-    <section className="bg-background py-20 md:py-28">
+    <section className="reveal bg-background py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:px-8">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            Επικοινωνία
-          </span>
-          <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">
+          <span className="eyebrow">Επικοινωνία</span>
+          <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
             Είμαστε εδώ για να σας υποστηρίξουμε
           </h2>
           <ul className="mt-8 space-y-5 text-sm">
