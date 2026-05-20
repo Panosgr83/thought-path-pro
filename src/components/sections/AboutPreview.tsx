@@ -1,16 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import aboutPortrait from "@/assets/about-portrait.png";
 
 export function AboutPreview() {
   return (
     <section className="bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:items-center md:px-8">
         <div className="relative">
-          <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-primary/15 via-primary-soft/20 to-secondary shadow-[0_20px_60px_-20px_rgba(15,95,92,0.2)]">
-            <svg viewBox="0 0 400 500" className="h-full w-full" aria-hidden>
-              <circle cx="200" cy="180" r="80" fill="oklch(0.42 0.055 180)" opacity="0.12" />
-              <rect x="120" y="280" width="160" height="180" rx="80" fill="oklch(0.42 0.055 180)" opacity="0.08" />
-            </svg>
+          <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.2)]">
+            <img
+              src={aboutPortrait}
+              alt="Ευδοκία Τίντζη-Σαββιδάκη"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
           <div className="absolute -bottom-6 -right-4 hidden rounded-xl border border-border bg-card p-4 shadow-lg md:block">
             <div className="text-3xl font-serif text-primary">7+</div>

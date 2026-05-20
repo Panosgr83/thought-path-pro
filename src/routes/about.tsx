@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import aboutPortrait from "@/assets/about-portrait.png";
 
 const TITLE = `Βιογραφικό — Ευδοκία Τίντζη-Σαββιδάκη | ${SITE.name}`;
 const DESCRIPTION =
@@ -55,11 +56,13 @@ function AboutPage() {
     <>
       <section className="bg-secondary/40 py-16 md:py-24">
         <div className="mx-auto grid max-w-5xl gap-12 px-4 md:grid-cols-[1fr_1.4fr] md:items-center md:px-8">
-          <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-br from-primary/15 via-primary-soft/25 to-secondary shadow-[0_20px_60px_-20px_rgba(15,95,92,0.25)]">
-            <svg viewBox="0 0 400 500" className="h-full w-full" aria-hidden>
-              <circle cx="200" cy="180" r="100" fill="oklch(0.42 0.055 180)" opacity="0.12" />
-              <rect x="100" y="300" width="200" height="200" rx="100" fill="oklch(0.42 0.055 180)" opacity="0.08" />
-            </svg>
+          <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.25)]">
+            <img
+              src={aboutPortrait}
+              alt="Ευδοκία Τίντζη-Σαββιδάκη — πορτραίτο"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
           </div>
           <div>
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const NAV = [
   { to: "/", label: "Αρχική" },
@@ -32,12 +33,19 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20 md:px-8">
-        <Link to="/" className="flex flex-col leading-tight">
-          <span className="font-serif text-lg font-medium tracking-tight text-ink md:text-xl">
-            {SITE.name}
-          </span>
-          <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            {SITE.tagline}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt={`${SITE.name} — λογότυπο`}
+            className="h-11 w-11 shrink-0 md:h-12 md:w-12"
+          />
+          <span className="flex flex-col leading-tight">
+            <span className="font-serif text-base font-medium tracking-tight text-ink md:text-lg">
+              {SITE.name}
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground md:text-[11px]">
+              {SITE.tagline}
+            </span>
           </span>
         </Link>
 
