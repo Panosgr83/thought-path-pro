@@ -3,13 +3,11 @@ import { TESTIMONIALS, SITE } from "@/lib/site";
 
 export function Testimonials() {
   return (
-    <section className="bg-background py-20 md:py-28">
+    <section className="reveal bg-background py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
-        <div className="mb-12 max-w-2xl">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-            Μαρτυρίες
-          </span>
-          <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">
+        <div className="mb-14 max-w-2xl">
+          <span className="eyebrow">Μαρτυρίες</span>
+          <h2 className="mt-3 font-serif text-3xl leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.5rem]">
             Τι λένε άνθρωποι που εμπιστεύτηκαν τη διαδρομή τους
           </h2>
           <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
