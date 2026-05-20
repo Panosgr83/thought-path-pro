@@ -4,9 +4,9 @@ import { SITE } from "@/lib/site";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import aboutPortrait from "@/assets/about-portrait.png";
 
-const TITLE = `Βιογραφικό — Ευδοκία Τίντζη-Σαββιδάκη | ${SITE.name}`;
+const TITLE = `Ευδοκία Τίντζη-Σαββιδάκη — Ψυχολόγος Γαλάτσι | ${SITE.name}`;
 const DESCRIPTION =
-  "Κοινωνική Ψυχολόγος, Παιδοψυχολόγος, Σύμβουλος Συνθετικής Συμβουλευτικής. Μέλος Ελληνικής & Ευρωπαϊκής Εταιρείας Συμβουλευτικής.";
+  "Κοινωνική Ψυχολόγος & Παιδοψυχολόγος στο Γαλάτσι. Σύμβουλος Συνθετικής Συμβουλευτικής, μέλος Ελληνικής & Ευρωπαϊκής Εταιρείας Συμβουλευτικής. 7+ χρόνια εμπειρίας.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -15,7 +15,9 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
+      { property: "og:url", content: `${SITE.url}/about` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/about` }],
     scripts: [
       {
         type: "application/ld+json",
