@@ -74,11 +74,11 @@ export function Hero() {
         </div>
 
         <div className="fade-up relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.25)]">
+          <div className="relative w-full overflow-hidden rounded-3xl shadow-[0_20px_60px_-20px_rgba(239,106,59,0.25)]">
             <img
               src={heroPortrait}
               alt="Ευδοκία Τίντζη-Σαββιδάκη — Κοινωνική Ψυχολόγος, Παιδοψυχολόγος"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="h-auto w-full object-cover"
               loading="eager"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent p-6 md:p-8">
